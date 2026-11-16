@@ -24,6 +24,7 @@ import {
   Trash2,
   X,
 } from 'lucide-react';
+import heroStudyImage from './assets/images/hero_forest_study_1794820164961.jpg';
 
 type ResearchCategory = '학술논문' | '학회발표' | '보고서' | '프로젝트';
 type ResearchFilter = '전체' | ResearchCategory;
@@ -45,6 +46,7 @@ interface ProfileData {
   aboutVisionTitle: string;
   aboutVisionBody: string;
   email: string;
+  githubUrl: string;
   contactMessage: string;
 }
 
@@ -75,8 +77,8 @@ interface PortfolioStore {
 
 const STORAGE_KEY = 'youth_forest_portfolio_v2';
 const ADMIN_PASSWORD = '1234';
-const HERO_STUDY_IMAGE = '/src/assets/images/hero_forest_study_1794820164961.jpg';
-const PORTRAIT_IMAGE = '/assets/images/yeojihoon_profile.jpg';
+const HERO_STUDY_IMAGE = heroStudyImage;
+const PORTRAIT_IMAGE = './assets/images/yeojihoon_profile.jpg';
 
 const INITIAL_DATA: PortfolioStore = {
   profile: {
@@ -99,6 +101,7 @@ const INITIAL_DATA: PortfolioStore = {
     aboutVisionBody:
       '이론과 현장이 분리되지 않고 서로를 비추는 청소년지도학을 지향합니다. 청소년이 스스로 자신의 가능성을 발견하고 건강한 숲처럼 자라날 수 있도록 돕는 연구자이자 실천가로 성장하겠습니다.',
     email: 'yeojihoon00@naver.com',
+    githubUrl: '',
     contactMessage:
       '청소년 프로그램 기획, 연구 교류, 현장 활동 및 협업과 관련한 문의는 아래 이메일로 편하게 연락해 주세요.',
   },
@@ -736,6 +739,20 @@ export default function App() {
                     required
                     value={profileForm.email}
                     onChange={(e) => setProfileForm({ ...profileForm, email: e.target.value })}
+                    className="mt-2 w-full rounded-xl border border-[#DCE6DF] bg-white px-4 py-2.5 text-sm text-[#2C3531] focus:border-[#5F8D6E] focus:outline-none"
+                  />
+                </div>
+
+                <div className="md:col-span-2">
+                  <label htmlFor="githubUrl" className="block text-xs font-semibold text-[#2C3531]">
+                    GitHub 주소 (선택)
+                  </label>
+                  <input
+                    id="githubUrl"
+                    type="url"
+                    placeholder="https://github.com/사용자명"
+                    value={profileForm.githubUrl}
+                    onChange={(e) => setProfileForm({ ...profileForm, githubUrl: e.target.value })}
                     className="mt-2 w-full rounded-xl border border-[#DCE6DF] bg-white px-4 py-2.5 text-sm text-[#2C3531] focus:border-[#5F8D6E] focus:outline-none"
                   />
                 </div>
@@ -1808,6 +1825,17 @@ export default function App() {
             All rights reserved.
           </p>
           <div className="flex items-center gap-5">
+            {store.profile.githubUrl.trim() && (
+              <a
+                href={store.profile.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 hover:text-[#2C3531] transition-colors"
+              >
+                <span>GitHub</span>
+                <ArrowUpRight className="h-3 w-3" aria-hidden="true" />
+              </a>
+            )}
             <a href="#top" className="hover:text-[#2C3531] transition-colors">
               맨 위로
             </a>
