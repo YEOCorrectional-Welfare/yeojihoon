@@ -1,0 +1,6 @@
+{
+  "name": "지훈의 연구실 | Youth & Forest",
+  "description": "청소년의 성장과 마음을 함께 고민하는 청소년지도학 대학원생의 개인 포트폴리오 및 연구 아카이브",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
